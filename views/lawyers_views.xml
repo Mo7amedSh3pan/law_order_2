@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_lawyers_form" model="ir.ui.view">
+        <field name="name">view.lawyers.form</field>
+        <field name="model">lawyers.second</field>
+        <field name="arch" type="xml">
+            <form delete="1" edit="2" create="3">
+                <header>
+                    <field name="state" widget="statusbar" nolable="1"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h2>
+                            <field name="priority" widget="priority"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="field01"/>
+                            <field name="html_field" placeholder="type an html text"/>
+                            <field name="field10"/>
+                        </group>
+                        <group>
+                            <field name="field04"/>
+                            <field name="gender"/>
+                            <field name="field06"/>
+                            <field name="field07"/>
+                            <field name="field08"/>
+                        </group>
+
+                    <group>
+                        <button string="object test" class="oe_highlight" type="object"
+                                name="action_test"
+                                confirm="This will assign leads to all members. Do you want to proceed?"></button>
+                        <button string="action test" class="oe_highlight" type="action"
+                                name="%(law_order_2.view_lawyers_action)d"
+                                confirm="This will assign leads to all members. Do you want to proceed?"></button>
+                    </group>
+
+                        <notebook>
+                            <page string="first" name="first_page">
+                                <group>
+                                    <field name="field09"/>
+                                </group>
+                            </page>
+                            <page string="second" name="second_page">
+                                <group>
+                                    <field name="ref_company_id"/>
+                                </group>
+                            </page>
+                            <page string="third" name="third_page">
+                                <group>
+                                    <field name="ref"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </group>
+
+
+                </sheet>
+                <!--Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_lawyers_tree" model="ir.ui.view">
+        <field name="name">view.lawyers.tree</field>
+        <field name="model">lawyers.second</field>
+        <field name="arch" type="xml">
+            <tree create="2">
+                <field name="name" string="lawyer name"/>
+                <field name="field01"/>
+                <field name="html_field"/>
+                <field name="field04"/>
+                <field name="gender"/>
+                <field name="field06"/>
+                <field name="field07"/>
+                <field name="field08"/>
+                <field name="field09"/>
+                <field name="field10"/>
+                <field name="ref_company_id"/>
+                <field name="ref"/>
+                <field name="priority"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_lawyers_search" model="ir.ui.view">
+        <field name="name">view.lawyers.search</field>
+        <field name="model">lawyers.second</field>
+        <field name="arch" type="xml">
+            <search string="search bar">
+                <field name="name"/>
+                <field name="field01"/>
+                <field name="html_field"/>
+                <field name="gender"/>
+                <filter string="Male" name="filter_male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="filter_female" domain="[('gender', '=', 'female')]"/>
+                <separator/>
+                <filter string="name" name="filter_name" domain="[('name','=','mohamed')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" domain="" context="{'group_by':'gender'}"/>
+                </group>
+<!--                <searchpanel>-->
+<!--                    <field name="gender" string="Gender" icon="fa-filter" enable_counters="1" select="multi"/>-->
+<!--                </searchpanel>-->
+            </search>
+        </field>
+    </record>
+
+    <record id="view_lawyers_action" model="ir.actions.act_window">
+        <field name="name">lawyers model</field>
+        <field name="res_model">lawyers.second</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
+

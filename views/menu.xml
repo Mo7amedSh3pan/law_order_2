@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <menuitem name="lawyer first menu"
+              id="lawyer_first_menu"
+              sequence="1"/>
+
+    <menuitem id="lawyer_second_menu"
+              name="lawyer second menu"
+              sequence="1"
+              parent="lawyer_first_menu"/>
+
+    <menuitem id="customer_second_menu"
+              name="customer second menu"
+              sequence="2"
+              parent="lawyer_first_menu"/>
+
+    <menuitem name="lawyer third menu"
+              id="lawyer_third_menu"
+              sequence="1"
+              parent="lawyer_second_menu"
+              action="view_lawyers_action"/>
+
+
+    <menuitem id="customer_third_menu"
+              name="customer third menu"
+              sequence="1"
+              parent="customer_second_menu"
+              action="view_customer_action"/>
+
+</odoo>
